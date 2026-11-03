@@ -1,0 +1,47 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="{{site.name}} home">
+      <svg class="brand-mark" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+        <rect width="34" height="34" rx="9" fill="#0B7F5A"/>
+        <circle cx="17" cy="17" r="7.5" fill="none" stroke="#fff" stroke-width="3.2"/>
+        <circle cx="22.3" cy="11.7" r="2.6" fill="#F59E0B" stroke="#0B7F5A" stroke-width="1.6"/>
+      </svg>
+      <span class="brand-name">OneSync <span class="brand-erp">ERP</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul>
+        <li class="has-menu">
+          <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-product">Product{{icon:chevron}}</button>
+          <ul id="menu-product" class="submenu">
+            <li><a href="/erp-software/">ERP overview</a></li>
+            <li><a href="/how-it-works/">How it works</a></li>
+            <li><a href="/features/">Capabilities</a></li>
+          </ul>
+        </li>
+        <li><a href="/solutions/">Solutions</a></li>
+        <li class="has-menu">
+          <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-resources">Resources{{icon:chevron}}</button>
+          <ul id="menu-resources" class="submenu">
+            <li><a href="/resources/what-is-erp-software/">What is ERP software?</a></li>
+            <li><a href="/resources/how-to-choose-erp-software/">How to choose ERP software</a></li>
+            <li><a href="/resources/sales-purchase-inventory-workflow/">Sales, purchasing and inventory workflow</a></li>
+          </ul>
+        </li>
+        <li class="has-menu">
+          <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-company">Company{{icon:chevron}}</button>
+          <ul id="menu-company" class="submenu">
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        {{signin}}
+        <a class="btn btn-primary btn-sm" href="/book-demo/">Book a demo{{icon:arrow}}</a>
+      </div>
+    </nav>
+  </div>
+</header>

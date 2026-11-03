@@ -1,0 +1,294 @@
+---
+title: How OneSync ERP works: order to cash and purchase to payment
+description: Follow a sale from order to payment and a purchase from order to settlement. See how stock, status and exceptions are tracked in OneSync ERP.
+path: /how-it-works/
+crumb: How it works
+---
+<section class="page-hero">
+  <div class="container ph-grid">
+    <div>
+      <p class="eyebrow">How it works</p>
+      <h1>See the workflow, not just the feature list.</h1>
+      <p class="lead">A feature list tells you what a product has. A workflow tells you how work actually moves. Below are the two journeys most trading and distribution businesses run every day, followed by how stock and corrections fit in.</p>
+      <p class="muted mt-2">The stages below describe how OneSync connects records. Your own business may skip or add steps, and we will walk through yours in a demo.</p>
+      <ul class="pagenav" aria-label="On this page">
+        <li><a href="#order-to-cash">Order to cash</a></li>
+        <li><a href="#exceptions">When things do not go to plan</a></li>
+        <li><a href="#purchase-to-payment">Purchase to payment</a></li>
+        <li><a href="#stock">Stock</a></li>
+        <li><a href="#returns">Returns</a></li>
+        <li><a href="#getting-started">Getting started</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="order-to-cash">
+  <div class="container journey-split">
+    <div class="journey-intro">
+      <span class="ico">{{icon:cart}}</span>
+      <p class="eyebrow mt-2">Journey 1</p>
+      <h2 class="mt-1">Order to cash</h2>
+      <p>From a customer&rsquo;s request to money received. Follow a customer&rsquo;s demand from the first record through delivery, invoicing and collection.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><div class="step-body">
+        <h3>Enquiry, quotation or direct order</h3>
+        <p>A customer asks for goods or services.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Customer</span><span class="tagpill">Items</span><span class="tagpill">Quantities</span><span class="tagpill">Requested price</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Check</h3>
+        <p>Customer, items, price, discount and credit position are checked where supported.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Warnings or approvals</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Confirm</h3>
+        <p>The order becomes a commitment.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Order status changes to confirmed</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Check stock and arrange fulfilment</h3>
+        <p>Availability is checked; goods are picked, or a purchase is raised.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Stock position</span><span class="tagpill">Reservations where supported</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Dispatch or deliver</h3>
+        <p>Goods leave.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Delivered quantities against the order</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Invoice</h3>
+        <p>An invoice is created or recorded.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Invoice linked to the order</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Collect</h3>
+        <p>A payment or receipt is recorded and allocated.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Amount received against the invoice</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Follow up</h3>
+        <p>Pending orders, overdue balances and returns are monitored.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Reports and lists</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Reconcile</h3>
+        <p>Sales, stock and money are compared.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Differences surfaced for review</span></p>
+      </div></li>
+    </ol>
+  </div>
+  <div class="container mt-4">
+    <h3>Three statuses, not one.</h3>
+    <p class="measure mt-1">An order can be delivered but unpaid, invoiced but not yet delivered, or partly delivered and partly invoiced. So OneSync tracks the following separately instead of forcing everything into a single status.</p>
+    <div class="three-status">
+      <div><h4>Fulfilment</h4><p>Not started, partly fulfilled, fulfilled</p></div>
+      <div><h4>Invoicing</h4><p>Not invoiced, partly invoiced, invoiced</p></div>
+      <div><h4>Payment</h4><p>Unpaid, partly paid, settled</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint" id="exceptions">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">When things do not go to plan</p>
+      <h2>Questions worth asking any ERP vendor, including us</h2>
+      <p>Real orders have exceptions. A good workflow plans for them. These are the situations we think are worth testing in any demo.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Situation</th><th scope="col">What a good system must answer</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Situation">A duplicate order is submitted</td><td data-label="What a good system must answer">How is a duplicate detected, and what is the safe way to retry?</td></tr>
+          <tr><td data-label="Situation">A price, product or tax detail is missing</td><td data-label="What a good system must answer">Can the order be saved as a draft? What blocks confirmation?</td></tr>
+          <tr><td data-label="Situation">A discount is outside policy</td><td data-label="What a good system must answer">Who can approve it, and is the original request kept?</td></tr>
+          <tr><td data-label="Situation">There is not enough stock</td><td data-label="What a good system must answer">Is the order held, partly fulfilled, back-ordered or substituted?</td></tr>
+          <tr><td data-label="Situation">Stock changes after confirmation</td><td data-label="What a good system must answer">How is committed stock protected?</td></tr>
+          <tr><td data-label="Situation">A customer is over the credit limit</td><td data-label="What a good system must answer">Is the order blocked or held, and who can override?</td></tr>
+          <tr><td data-label="Situation">Only part of the order is dispatched</td><td data-label="What a good system must answer">How are delivered and outstanding quantities shown?</td></tr>
+          <tr><td data-label="Situation">An invoice fails to generate</td><td data-label="What a good system must answer">Is the order still fulfilled? How is a duplicate invoice avoided on retry?</td></tr>
+          <tr><td data-label="Situation">A payment arrives with no clear match</td><td data-label="What a good system must answer">Where is the money recorded while it is investigated?</td></tr>
+          <tr><td data-label="Situation">Goods are returned after invoice and payment</td><td data-label="What a good system must answer">Which physical and financial corrections apply?</td></tr>
+          <tr><td data-label="Situation">An order is cancelled after delivery</td><td data-label="What a good system must answer">What must be reversed, and what must be kept?</td></tr>
+          <tr><td data-label="Situation">The system times out</td><td data-label="What a good system must answer">How is the true outcome checked before retrying?</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="purchase-to-payment">
+  <div class="container journey-split">
+    <div class="journey-intro">
+      <span class="ico">{{icon:warehouse}}</span>
+      <p class="eyebrow mt-2">Journey 2</p>
+      <h2 class="mt-1">Purchase to payment</h2>
+      <p>From a need to buy to a supplier paid. Track what the business needs to buy, what was ordered, what arrived, what was accepted and what remains payable.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><div class="step-body"><h3>Identify the need</h3><p>Low stock, a customer order or a request creates a purchase need.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Choose a supplier</h3><p>Price and terms are checked against supplier records.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Approve</h3><p>An approval is recorded where the business requires it.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Order</h3><p>A purchase order or agreed purchase record is created.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Receive</h3><p>Actual received quantities are recorded, separate from the ordered quantities.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Resolve differences</h3><p>Short, excess, damaged or rejected quantities are handled.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Record the supplier bill</h3><p>The bill is recorded.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Match</h3><p>Bill, order and receipt are compared where the business needs it.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Pay</h3><p>Payment is recorded and the supplier balance updates.</p></div></li>
+    </ol>
+  </div>
+  <div class="container mt-4">
+    <div class="cap-split">
+      <div>
+        <h3>Four events, kept separate.</h3>
+        <p class="mt-1">Goods received, supplier bill received, amount owed and payment made are four different events. A receipt can add stock before the bill arrives, and a bill can arrive before the goods. OneSync keeps them as separate steps, linked together, so that each one can be seen and checked.</p>
+        <p><strong>Situations to be ready for:</strong> a rejected request, a supplier changing price or delivery date, a receipt larger or smaller than ordered, goods that fail inspection, a duplicate supplier bill, a bill that disagrees with the order, a supplier credit note instead of a refund, a delayed payment record, and a correction after posting.</p>
+      </div>
+      <figure class="ledger ledger--light m-0" aria-labelledby="po-cap">
+        <div class="ledger-head"><span>Purchase order PO-0087 and receipt</span><span class="tag">Illustrative</span></div>
+        <div class="ledger-scroll">
+          <table aria-hidden="true">
+            <thead><tr><th scope="col">Item</th><th scope="col" class="num">Ordered</th><th scope="col" class="num">Received</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><td>Packaging tape, carton</td><td class="num">40</td><td class="num">40</td><td><span class="ok">Complete</span></td></tr>
+              <tr><td>Barcode labels, roll</td><td class="num">50</td><td class="num">42</td><td><span class="flag">Short receipt</span></td></tr>
+              <tr><td>Stretch film, roll</td><td class="num">30</td><td class="num">30</td><td><span class="ok">Complete</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="ledger-foot" id="po-cap">Illustrative example with sample data.</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark" id="stock">
+  <div class="container">
+    <div class="split items-center">
+      <div>
+        <p class="eyebrow">How stock fits in</p>
+        <h2>Every change in stock has a reason.</h2>
+        <p class="mt-2">In OneSync, stock quantities change only through recorded events. Each event leaves a movement that can be traced back to the document or person behind it. There is no way to quietly overwrite a balance.</p>
+        <p>That is why you can ask &ldquo;why is this item&rsquo;s stock 80?&rdquo; and trace it, and why a physical count that disagrees leads to a reviewed adjustment instead of a silent edit.</p>
+      </div>
+      <figure class="ledger m-0" aria-labelledby="ledger-cap">
+        <div class="ledger-head"><span>Stock movement history: sample item</span><span class="tag">Illustrative</span></div>
+        <div class="ledger-scroll">
+          <table aria-hidden="true">
+            <thead><tr><th scope="col">Movement</th><th scope="col">Source</th><th scope="col">User</th><th scope="col" class="num">Qty</th></tr></thead>
+            <tbody>
+              <tr><td>Opening stock</td><td>Import</td><td>Asha K.</td><td class="num">100</td></tr>
+              <tr><td>Goods receipt</td><td>PO-0087</td><td>Rohan P.</td><td class="num plus">+ 40</td></tr>
+              <tr><td>Dispatch</td><td>SO-1022</td><td>Rohan P.</td><td class="num minus">&minus; 60</td></tr>
+              <tr><td>Adjustment</td><td>Count, approved</td><td>Asha K.</td><td class="num minus">&minus; 2</td></tr>
+              <tr><td>Return</td><td>SO-1021</td><td>Rohan P.</td><td class="num plus">+ 2</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="3">Balance, the sum of the movements above</td><td class="num">80</td></tr></tfoot>
+          </table>
+        </div>
+        <p class="ledger-foot" id="ledger-cap">Illustrative example with sample data.</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stock-detail">
+  <div class="container">
+    <div class="grid grid-3">
+      <div class="card">
+        <span class="ico">{{icon:history}}</span>
+        <h3>Events that can change stock</h3>
+        <ul class="bullets">
+          <li>Opening stock brought in when you start</li>
+          <li>Goods received against a purchase</li>
+          <li>Goods dispatched against an order</li>
+          <li>Transfers between locations, where you use more than one</li>
+          <li>Reservations and releases, where supported</li>
+          <li>Counts and adjustments, with a reason and a responsible user</li>
+          <li>Returns, damage, quarantine or disposal, where supported</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="ico">{{icon:layers}}</span>
+        <h3>Different quantities, kept apart</h3>
+        <p>A good stock record separates what is physically on hand from what is reserved, in transit or held back. OneSync keeps physical quantity separate from other quantity states where the product supports them.</p>
+      </div>
+      <div class="card">
+        <span class="ico">{{icon:shield}}</span>
+        <h3>Control principles</h3>
+        <ul class="bullets">
+          <li>Every stock movement can be traced to its source document or an authorised adjustment.</li>
+          <li>Available quantity is calculated one agreed way, not edited separately in different places.</li>
+          <li>A repeated delivery or receipt request does not create duplicate movements.</li>
+          <li>Corrections keep history instead of erasing it.</li>
+          <li>Negative stock, overselling and back-dated entries follow explicit rules, not accidents.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint" id="returns">
+  <div class="container">
+    <div class="split items-start">
+      <div>
+        <p class="eyebrow">Returns and corrections</p>
+        <h2>A return is more than a minus sign.</h2>
+        <p class="mt-2">When goods come back, several things may be true at once. The stock may return to saleable condition, wait for inspection, or be written off. The customer may receive a refund, a credit or a replacement. An invoice may need a correction. OneSync treats a return as its own workflow, linked to the original sale, instead of a negative quantity typed against stock.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-title"><span class="ico ico--sm">{{icon:undo}}</span><h3>Outcomes a return can have</h3></div>
+        <ul class="checks">
+          <li>Goods back into saleable stock</li>
+          <li>Goods into quarantine pending inspection</li>
+          <li>Damaged or scrapped goods</li>
+          <li>Exchange or replacement</li>
+          <li>Credit without return, where policy allows</li>
+          <li>Refund paid or pending</li>
+          <li>Supplier replacement, credit or refund</li>
+          <li>Invoice correction, credit or debit note, where applicable</li>
+          <li>A transaction cancelled before any downstream effect</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="getting-started">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Getting started</p>
+      <h2>A simple start</h2>
+      <p>A small business should not need a long project to begin. OneSync is designed around guided setup, sensible defaults and a short first configuration. Where a business has more to bring across, we help plan it.</p>
+    </div>
+    <div class="journey-card">
+      <ol class="stepper">
+        <li><span class="node">{{icon:building}}</span><strong>Set up the company</strong><small>Profile, users and roles</small></li>
+        <li><span class="node">{{icon:users}}</span><strong>Add your records</strong><small>Customers, suppliers, products and units, entered or imported</small></li>
+        <li><span class="node">{{icon:box}}</span><strong>Enter opening stock and balances</strong><small>Where applicable</small></li>
+        <li><span class="node">{{icon:route}}</span><strong>Start with one workflow</strong><small>For example, a sale from order to receipt</small></li>
+        <li><span class="node">{{icon:chart}}</span><strong>Check the reports</strong><small>See pending orders, stock and dues against what you know</small></li>
+        <li><span class="node">{{icon:trend}}</span><strong>Add more</strong><small>As the business needs it</small></li>
+      </ol>
+    </div>
+    <div class="grid grid-2 mt-3">
+      <div class="card"><span class="ico">{{icon:list}}</span><h3>What is quoted separately</h3><p>Larger data cleaning and migration, custom reports, customer-specific integrations, on-site training, custom workflow development and dedicated account management.</p></div>
+      <div class="card"><span class="ico">{{icon:headset}}</span><h3>Talk to a real person</h3><p>Tell us how you work, and we will talk it through.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>Walk through your own workflow.</h2>
+      <p>Every business handles these journeys a little differently. Describe yours, and we will show where OneSync fits and where it does not.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-light btn-lg" href="/book-demo/">Book a demo</a>
+      <a class="btn btn-ghost-light btn-lg" href="/contact/">Ask a product question</a>
+    </div>
+  </div>
+</section>

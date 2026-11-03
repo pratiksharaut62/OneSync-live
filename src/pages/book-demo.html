@@ -1,0 +1,125 @@
+---
+title: Book a demo | OneSync ERP
+description: Describe the workflow you want to manage and see the relevant parts of OneSync ERP. We will say plainly what sits outside the product.
+path: /book-demo/
+crumb: Book a demo
+---
+<section class="page-hero">
+  <div class="container ph-grid">
+    <div>
+      <p class="eyebrow">Book a demo</p>
+      <h1>See OneSync on your workflow.</h1>
+      <p class="lead">Tell us how your business handles sales, purchasing, stock or follow-up today. In the demo we will walk through the relevant parts of OneSync and say plainly what sits outside the product.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact-grid">
+    <div class="form-card">
+      <form id="demo-form" data-kind="demo" method="post" action="{{site.formEndpoint}}" novalidate>
+        <div class="field">
+          <label for="d-name">Name <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="d-name" name="name" autocomplete="name" required aria-describedby="d-name-err">
+          <p class="error-msg" id="d-name-err" role="alert"></p>
+        </div>
+        <div class="field">
+          <label for="d-email">Work email <span class="req" aria-hidden="true">*</span></label>
+          <input type="email" id="d-email" name="email" autocomplete="email" inputmode="email" required aria-describedby="d-email-err">
+          <p class="error-msg" id="d-email-err" role="alert"></p>
+        </div>
+        <div class="field">
+          <label for="d-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+          <input type="tel" id="d-phone" name="phone" autocomplete="tel" inputmode="tel" required aria-describedby="d-phone-err">
+          <p class="error-msg" id="d-phone-err" role="alert"></p>
+        </div>
+        <div class="field">
+          <label for="d-business">Business name</label>
+          <input type="text" id="d-business" name="business_name" autocomplete="organization">
+          <p class="error-msg" role="alert"></p>
+        </div>
+        <div class="field">
+          <label for="d-type">What does your business do?</label>
+          <select id="d-type" name="business_type">
+            <option value="">Select the closest match</option>
+            <option>Trading</option>
+            <option>Distribution</option>
+            <option>Manufacturing</option>
+            <option>Retail</option>
+            <option>Services</option>
+            <option>Other</option>
+          </select>
+          <p class="error-msg" role="alert"></p>
+        </div>
+        <div class="field">
+          <label for="d-people">How many people would use the system?</label>
+          <select id="d-people" name="users">
+            <option value="">Select a range</option>
+            <option>1 to 5</option>
+            <option>6 to 15</option>
+            <option>16 to 50</option>
+            <option>More</option>
+          </select>
+          <p class="error-msg" role="alert"></p>
+        </div>
+        <div class="field">
+          <label for="d-locations">How many locations or warehouses do you run?</label>
+          <select id="d-locations" name="locations">
+            <option value="">Select one</option>
+            <option>One</option>
+            <option>Two or three</option>
+            <option>More</option>
+          </select>
+          <p class="error-msg" role="alert"></p>
+        </div>
+        <div class="field">
+          <fieldset class="check-group">
+            <legend>What do you use today?</legend>
+            <div class="opts">
+              <div class="check"><input type="checkbox" id="u-sheets" name="uses" value="Spreadsheets"><label for="u-sheets">Spreadsheets</label></div>
+              <div class="check"><input type="checkbox" id="u-billing" name="uses" value="Billing software"><label for="u-billing">Billing software</label></div>
+              <div class="check"><input type="checkbox" id="u-acc" name="uses" value="Accounting software"><label for="u-acc">Accounting software</label></div>
+              <div class="check"><input type="checkbox" id="u-erp" name="uses" value="Another ERP"><label for="u-erp">Another ERP</label></div>
+              <div class="check"><input type="checkbox" id="u-paper" name="uses" value="Paper"><label for="u-paper">Paper</label></div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="field">
+          <fieldset class="check-group">
+            <legend>Which workflow matters most?</legend>
+            <div class="opts">
+              <div class="check"><input type="checkbox" id="w-sales" name="workflow" value="Sales"><label for="w-sales">Sales</label></div>
+              <div class="check"><input type="checkbox" id="w-purchasing" name="workflow" value="Purchasing"><label for="w-purchasing">Purchasing</label></div>
+              <div class="check"><input type="checkbox" id="w-stock" name="workflow" value="Stock"><label for="w-stock">Stock</label></div>
+              <div class="check"><input type="checkbox" id="w-payments" name="workflow" value="Payments"><label for="w-payments">Payments</label></div>
+              <div class="check"><input type="checkbox" id="w-reports" name="workflow" value="Reports"><label for="w-reports">Reports</label></div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="field">
+          <label for="d-notes">Anything we should know?</label>
+          <span class="hint" id="d-notes-hint">Please do not include customer data or financial records.</span>
+          <textarea id="d-notes" name="notes" aria-describedby="d-notes-hint"></textarea>
+          <p class="error-msg" role="alert"></p>
+        </div>
+        <div class="hp" aria-hidden="true">
+          <label for="d-website">Leave this field empty</label>
+          <input type="text" id="d-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+        <button class="btn btn-primary btn-lg" type="submit">Book a demo</button>
+        <p class="small muted mt-2">We use your details only to respond to your request. See our <a href="/privacy/">Privacy page</a>.</p>
+        <p id="demo-status" class="form-status" role="status" aria-live="polite" tabindex="-1"></p>
+      </form>
+    </div>
+
+    <aside aria-labelledby="expect-h">
+      <h2 class="h-md" id="expect-h">What to expect</h2>
+      <ul class="expect">
+        <li><strong>We listen first.</strong>You describe your workflow, systems and the problems that cost you the most time.</li>
+        <li><strong>We show the relevant parts.</strong>Only what matters to your business.</li>
+        <li><strong>We are clear about limits.</strong>Anything outside the product, we say so.</li>
+        <li><strong>You decide the next step.</strong>No pressure.</li>
+      </ul>
+    </aside>
+  </div>
+</section>

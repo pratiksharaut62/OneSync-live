@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /api/
+Disallow: /preview/
+
+Sitemap: https://www.onesync.example/sitemap.xml

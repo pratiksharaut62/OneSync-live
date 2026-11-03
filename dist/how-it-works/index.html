@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How OneSync ERP works: order to cash and purchase to payment</title>
+  <meta name="description" content="Follow a sale from order to payment and a purchase from order to settlement. See how stock, status and exceptions are tracked in OneSync ERP.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.onesync.example/how-it-works/">
+  <meta name="theme-color" content="#0B2E27">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OneSync ERP">
+  <meta property="og:title" content="How OneSync ERP works: order to cash and purchase to payment">
+  <meta property="og:description" content="Follow a sale from order to payment and a purchase from order to settlement. See how stock, status and exceptions are tracked in OneSync ERP.">
+  <meta property="og:url" content="https://www.onesync.example/how-it-works/">
+  <meta property="og:locale" content="en_IN">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.onesync.example/"},{"@type":"ListItem","position":2,"name":"How it works","item":"https://www.onesync.example/how-it-works/"}]}]}</script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a1 1 0 0 0 1 .8h8.8a1 1 0 0 0 1-.8L20 8H6"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4l4 3v4h-8"/><circle cx="6.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-rupee" viewBox="0 0 24 24"><path d="M6 4h12M6 9h12M9 4c5 0 7 2 7 5s-2 5-7 5l7 6"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 12.5 9 5 9-5M3 17l9 5 9-5"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H15a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h6.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M4 20h16"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></symbol>
+  <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17v.5"/></symbol>
+  <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 21V10l6 3.5V10l6 3.5V5h4l2 16zM3 21h18"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9 5.5 4h13L20 9M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9M5 11v9h14v-9M10 20v-5h4v5"/></symbol>
+  <symbol id="i-warehouse" viewBox="0 0 24 24"><path d="M3 9 12 4l9 5v11H3zM8 20v-6h8v6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></symbol>
+  <symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-sheet" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M4 15h16M10 4v16"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.5 10a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/><path d="M7.5 15h9"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4h12a2 2 0 0 1 2 2v14H7a2 2 0 0 1-2-2z"/><path d="M5 18a2 2 0 0 1 2-2h12M9 8h6"/></symbol>
+  <symbol id="i-percent" viewBox="0 0 24 24"><path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></symbol>
+  <symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M10 4a2 2 0 1 1 4 0v2h4v4h2a2 2 0 1 1 0 4h-2v6H4v-6h2a2 2 0 1 0 0-4H4V6h6z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="m4 6 1.5 1.5L8 5M4 12l1.5 1.5L8 11M4 18l1.5 1.5L8 17M11 6h9M11 12h9M11 18h9"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 0 1 12 0v6l1.5 2h-15zM10 21h4"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z"/></symbol>
+  <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2M4 14h3v5H5a1 1 0 0 1-1-1zM20 14h-3v5h2a1 1 0 0 0 1-1zM17 19v1a2 2 0 0 1-2 2h-3"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M5 7h14M5 7l-3 7a3.5 3.5 0 0 0 6 0zM19 7l-3 7a3.5 3.5 0 0 0 6 0z"/></symbol>
+</svg>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="../index.html" aria-label="OneSync ERP home">
+      <svg class="brand-mark" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+        <rect width="34" height="34" rx="9" fill="#0B7F5A"/>
+        <circle cx="17" cy="17" r="7.5" fill="none" stroke="#fff" stroke-width="3.2"/>
+        <circle cx="22.3" cy="11.7" r="2.6" fill="#F59E0B" stroke="#0B7F5A" stroke-width="1.6"/>
+      </svg>
+      <span class="brand-name">OneSync <span class="brand-erp">ERP</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul>
+        <li class="has-menu">
+          <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-product">Product<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></button>
+          <ul id="menu-product" class="submenu">
+            <li><a href="../erp-software/index.html">ERP overview</a></li>
+            <li><a href="../how-it-works/index.html" aria-current="page">How it works</a></li>
+            <li><a href="../features/index.html">Capabilities</a></li>
+          </ul>
+        </li>
+        <li><a href="../solutions/index.html">Solutions</a></li>
+        <li class="has-menu">
+          <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-resources">Resources<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></button>
+          <ul id="menu-resources" class="submenu">
+            <li><a href="../resources/what-is-erp-software/index.html">What is ERP software?</a></li>
+            <li><a href="../resources/how-to-choose-erp-software/index.html">How to choose ERP software</a></li>
+            <li><a href="../resources/sales-purchase-inventory-workflow/index.html">Sales, purchasing and inventory workflow</a></li>
+          </ul>
+        </li>
+        <li class="has-menu">
+          <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-company">Company<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></button>
+          <ul id="menu-company" class="submenu">
+            <li><a href="../about/index.html">About</a></li>
+            <li><a href="../contact/index.html">Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        
+        <a class="btn btn-primary btn-sm" href="../book-demo/index.html">Book a demo<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <main id="main">
+    <div class="container"><nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">How it works</li></ol></nav></div>
+    <section class="page-hero">
+  <div class="container ph-grid">
+    <div>
+      <p class="eyebrow">How it works</p>
+      <h1>See the workflow, not just the feature list.</h1>
+      <p class="lead">A feature list tells you what a product has. A workflow tells you how work actually moves. Below are the two journeys most trading and distribution businesses run every day, followed by how stock and corrections fit in.</p>
+      <p class="muted mt-2">The stages below describe how OneSync connects records. Your own business may skip or add steps, and we will walk through yours in a demo.</p>
+      <ul class="pagenav" aria-label="On this page">
+        <li><a href="#order-to-cash">Order to cash</a></li>
+        <li><a href="#exceptions">When things do not go to plan</a></li>
+        <li><a href="#purchase-to-payment">Purchase to payment</a></li>
+        <li><a href="#stock">Stock</a></li>
+        <li><a href="#returns">Returns</a></li>
+        <li><a href="#getting-started">Getting started</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="order-to-cash">
+  <div class="container journey-split">
+    <div class="journey-intro">
+      <span class="ico"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cart"/></svg></span>
+      <p class="eyebrow mt-2">Journey 1</p>
+      <h2 class="mt-1">Order to cash</h2>
+      <p>From a customer&rsquo;s request to money received. Follow a customer&rsquo;s demand from the first record through delivery, invoicing and collection.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><div class="step-body">
+        <h3>Enquiry, quotation or direct order</h3>
+        <p>A customer asks for goods or services.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Customer</span><span class="tagpill">Items</span><span class="tagpill">Quantities</span><span class="tagpill">Requested price</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Check</h3>
+        <p>Customer, items, price, discount and credit position are checked where supported.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Warnings or approvals</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Confirm</h3>
+        <p>The order becomes a commitment.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Order status changes to confirmed</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Check stock and arrange fulfilment</h3>
+        <p>Availability is checked; goods are picked, or a purchase is raised.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Stock position</span><span class="tagpill">Reservations where supported</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Dispatch or deliver</h3>
+        <p>Goods leave.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Delivered quantities against the order</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Invoice</h3>
+        <p>An invoice is created or recorded.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Invoice linked to the order</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Collect</h3>
+        <p>A payment or receipt is recorded and allocated.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Amount received against the invoice</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Follow up</h3>
+        <p>Pending orders, overdue balances and returns are monitored.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Reports and lists</span></p>
+      </div></li>
+      <li class="step"><div class="step-body">
+        <h3>Reconcile</h3>
+        <p>Sales, stock and money are compared.</p>
+        <p class="links"><strong>Recorded</strong><span class="tagpill">Differences surfaced for review</span></p>
+      </div></li>
+    </ol>
+  </div>
+  <div class="container mt-4">
+    <h3>Three statuses, not one.</h3>
+    <p class="measure mt-1">An order can be delivered but unpaid, invoiced but not yet delivered, or partly delivered and partly invoiced. So OneSync tracks the following separately instead of forcing everything into a single status.</p>
+    <div class="three-status">
+      <div><h4>Fulfilment</h4><p>Not started, partly fulfilled, fulfilled</p></div>
+      <div><h4>Invoicing</h4><p>Not invoiced, partly invoiced, invoiced</p></div>
+      <div><h4>Payment</h4><p>Unpaid, partly paid, settled</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint" id="exceptions">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">When things do not go to plan</p>
+      <h2>Questions worth asking any ERP vendor, including us</h2>
+      <p>Real orders have exceptions. A good workflow plans for them. These are the situations we think are worth testing in any demo.</p>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Situation</th><th scope="col">What a good system must answer</th></tr></thead>
+        <tbody>
+          <tr><td data-label="Situation">A duplicate order is submitted</td><td data-label="What a good system must answer">How is a duplicate detected, and what is the safe way to retry?</td></tr>
+          <tr><td data-label="Situation">A price, product or tax detail is missing</td><td data-label="What a good system must answer">Can the order be saved as a draft? What blocks confirmation?</td></tr>
+          <tr><td data-label="Situation">A discount is outside policy</td><td data-label="What a good system must answer">Who can approve it, and is the original request kept?</td></tr>
+          <tr><td data-label="Situation">There is not enough stock</td><td data-label="What a good system must answer">Is the order held, partly fulfilled, back-ordered or substituted?</td></tr>
+          <tr><td data-label="Situation">Stock changes after confirmation</td><td data-label="What a good system must answer">How is committed stock protected?</td></tr>
+          <tr><td data-label="Situation">A customer is over the credit limit</td><td data-label="What a good system must answer">Is the order blocked or held, and who can override?</td></tr>
+          <tr><td data-label="Situation">Only part of the order is dispatched</td><td data-label="What a good system must answer">How are delivered and outstanding quantities shown?</td></tr>
+          <tr><td data-label="Situation">An invoice fails to generate</td><td data-label="What a good system must answer">Is the order still fulfilled? How is a duplicate invoice avoided on retry?</td></tr>
+          <tr><td data-label="Situation">A payment arrives with no clear match</td><td data-label="What a good system must answer">Where is the money recorded while it is investigated?</td></tr>
+          <tr><td data-label="Situation">Goods are returned after invoice and payment</td><td data-label="What a good system must answer">Which physical and financial corrections apply?</td></tr>
+          <tr><td data-label="Situation">An order is cancelled after delivery</td><td data-label="What a good system must answer">What must be reversed, and what must be kept?</td></tr>
+          <tr><td data-label="Situation">The system times out</td><td data-label="What a good system must answer">How is the true outcome checked before retrying?</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="purchase-to-payment">
+  <div class="container journey-split">
+    <div class="journey-intro">
+      <span class="ico"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-warehouse"/></svg></span>
+      <p class="eyebrow mt-2">Journey 2</p>
+      <h2 class="mt-1">Purchase to payment</h2>
+      <p>From a need to buy to a supplier paid. Track what the business needs to buy, what was ordered, what arrived, what was accepted and what remains payable.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><div class="step-body"><h3>Identify the need</h3><p>Low stock, a customer order or a request creates a purchase need.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Choose a supplier</h3><p>Price and terms are checked against supplier records.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Approve</h3><p>An approval is recorded where the business requires it.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Order</h3><p>A purchase order or agreed purchase record is created.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Receive</h3><p>Actual received quantities are recorded, separate from the ordered quantities.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Resolve differences</h3><p>Short, excess, damaged or rejected quantities are handled.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Record the supplier bill</h3><p>The bill is recorded.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Match</h3><p>Bill, order and receipt are compared where the business needs it.</p></div></li>
+      <li class="step"><div class="step-body"><h3>Pay</h3><p>Payment is recorded and the supplier balance updates.</p></div></li>
+    </ol>
+  </div>
+  <div class="container mt-4">
+    <div class="cap-split">
+      <div>
+        <h3>Four events, kept separate.</h3>
+        <p class="mt-1">Goods received, supplier bill received, amount owed and payment made are four different events. A receipt can add stock before the bill arrives, and a bill can arrive before the goods. OneSync keeps them as separate steps, linked together, so that each one can be seen and checked.</p>
+        <p><strong>Situations to be ready for:</strong> a rejected request, a supplier changing price or delivery date, a receipt larger or smaller than ordered, goods that fail inspection, a duplicate supplier bill, a bill that disagrees with the order, a supplier credit note instead of a refund, a delayed payment record, and a correction after posting.</p>
+      </div>
+      <figure class="ledger ledger--light m-0" aria-labelledby="po-cap">
+        <div class="ledger-head"><span>Purchase order PO-0087 and receipt</span><span class="tag">Illustrative</span></div>
+        <div class="ledger-scroll">
+          <table aria-hidden="true">
+            <thead><tr><th scope="col">Item</th><th scope="col" class="num">Ordered</th><th scope="col" class="num">Received</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><td>Packaging tape, carton</td><td class="num">40</td><td class="num">40</td><td><span class="ok">Complete</span></td></tr>
+              <tr><td>Barcode labels, roll</td><td class="num">50</td><td class="num">42</td><td><span class="flag">Short receipt</span></td></tr>
+              <tr><td>Stretch film, roll</td><td class="num">30</td><td class="num">30</td><td><span class="ok">Complete</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="ledger-foot" id="po-cap">Illustrative example with sample data.</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark" id="stock">
+  <div class="container">
+    <div class="split items-center">
+      <div>
+        <p class="eyebrow">How stock fits in</p>
+        <h2>Every change in stock has a reason.</h2>
+        <p class="mt-2">In OneSync, stock quantities change only through recorded events. Each event leaves a movement that can be traced back to the document or person behind it. There is no way to quietly overwrite a balance.</p>
+        <p>That is why you can ask &ldquo;why is this item&rsquo;s stock 80?&rdquo; and trace it, and why a physical count that disagrees leads to a reviewed adjustment instead of a silent edit.</p>
+      </div>
+      <figure class="ledger m-0" aria-labelledby="ledger-cap">
+        <div class="ledger-head"><span>Stock movement history: sample item</span><span class="tag">Illustrative</span></div>
+        <div class="ledger-scroll">
+          <table aria-hidden="true">
+            <thead><tr><th scope="col">Movement</th><th scope="col">Source</th><th scope="col">User</th><th scope="col" class="num">Qty</th></tr></thead>
+            <tbody>
+              <tr><td>Opening stock</td><td>Import</td><td>Asha K.</td><td class="num">100</td></tr>
+              <tr><td>Goods receipt</td><td>PO-0087</td><td>Rohan P.</td><td class="num plus">+ 40</td></tr>
+              <tr><td>Dispatch</td><td>SO-1022</td><td>Rohan P.</td><td class="num minus">&minus; 60</td></tr>
+              <tr><td>Adjustment</td><td>Count, approved</td><td>Asha K.</td><td class="num minus">&minus; 2</td></tr>
+              <tr><td>Return</td><td>SO-1021</td><td>Rohan P.</td><td class="num plus">+ 2</td></tr>
+            </tbody>
+            <tfoot><tr><td colspan="3">Balance, the sum of the movements above</td><td class="num">80</td></tr></tfoot>
+          </table>
+        </div>
+        <p class="ledger-foot" id="ledger-cap">Illustrative example with sample data.</p>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="stock-detail">
+  <div class="container">
+    <div class="grid grid-3">
+      <div class="card">
+        <span class="ico"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-history"/></svg></span>
+        <h3>Events that can change stock</h3>
+        <ul class="bullets">
+          <li>Opening stock brought in when you start</li>
+          <li>Goods received against a purchase</li>
+          <li>Goods dispatched against an order</li>
+          <li>Transfers between locations, where you use more than one</li>
+          <li>Reservations and releases, where supported</li>
+          <li>Counts and adjustments, with a reason and a responsible user</li>
+          <li>Returns, damage, quarantine or disposal, where supported</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="ico"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg></span>
+        <h3>Different quantities, kept apart</h3>
+        <p>A good stock record separates what is physically on hand from what is reserved, in transit or held back. OneSync keeps physical quantity separate from other quantity states where the product supports them.</p>
+      </div>
+      <div class="card">
+        <span class="ico"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span>
+        <h3>Control principles</h3>
+        <ul class="bullets">
+          <li>Every stock movement can be traced to its source document or an authorised adjustment.</li>
+          <li>Available quantity is calculated one agreed way, not edited separately in different places.</li>
+          <li>A repeated delivery or receipt request does not create duplicate movements.</li>
+          <li>Corrections keep history instead of erasing it.</li>
+          <li>Negative stock, overselling and back-dated entries follow explicit rules, not accidents.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint" id="returns">
+  <div class="container">
+    <div class="split items-start">
+      <div>
+        <p class="eyebrow">Returns and corrections</p>
+        <h2>A return is more than a minus sign.</h2>
+        <p class="mt-2">When goods come back, several things may be true at once. The stock may return to saleable condition, wait for inspection, or be written off. The customer may receive a refund, a credit or a replacement. An invoice may need a correction. OneSync treats a return as its own workflow, linked to the original sale, instead of a negative quantity typed against stock.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-title"><span class="ico ico--sm"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-undo"/></svg></span><h3>Outcomes a return can have</h3></div>
+        <ul class="checks">
+          <li>Goods back into saleable stock</li>
+          <li>Goods into quarantine pending inspection</li>
+          <li>Damaged or scrapped goods</li>
+          <li>Exchange or replacement</li>
+          <li>Credit without return, where policy allows</li>
+          <li>Refund paid or pending</li>
+          <li>Supplier replacement, credit or refund</li>
+          <li>Invoice correction, credit or debit note, where applicable</li>
+          <li>A transaction cancelled before any downstream effect</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="getting-started">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <p class="eyebrow">Getting started</p>
+      <h2>A simple start</h2>
+      <p>A small business should not need a long project to begin. OneSync is designed around guided setup, sensible defaults and a short first configuration. Where a business has more to bring across, we help plan it.</p>
+    </div>
+    <div class="journey-card">
+      <ol class="stepper">
+        <li><span class="node"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-building"/></svg></span><strong>Set up the company</strong><small>Profile, users and roles</small></li>
+        <li><span class="node"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></span><strong>Add your records</strong><small>Customers, suppliers, products and units, entered or imported</small></li>
+        <li><span class="node"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-box"/></svg></span><strong>Enter opening stock and balances</strong><small>Where applicable</small></li>
+        <li><span class="node"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-route"/></svg></span><strong>Start with one workflow</strong><small>For example, a sale from order to receipt</small></li>
+        <li><span class="node"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chart"/></svg></span><strong>Check the reports</strong><small>See pending orders, stock and dues against what you know</small></li>
+        <li><span class="node"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-trend"/></svg></span><strong>Add more</strong><small>As the business needs it</small></li>
+      </ol>
+    </div>
+    <div class="grid grid-2 mt-3">
+      <div class="card"><span class="ico"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-list"/></svg></span><h3>What is quoted separately</h3><p>Larger data cleaning and migration, custom reports, customer-specific integrations, on-site training, custom workflow development and dedicated account management.</p></div>
+      <div class="card"><span class="ico"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-headset"/></svg></span><h3>Talk to a real person</h3><p>Tell us how you work, and we will talk it through.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>Walk through your own workflow.</h2>
+      <p>Every business handles these journeys a little differently. Describe yours, and we will show where OneSync fits and where it does not.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-light btn-lg" href="../book-demo/index.html">Book a demo</a>
+      <a class="btn btn-ghost-light btn-lg" href="../contact/index.html">Ask a product question</a>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <p class="footer-brand">OneSync <span>ERP</span></p>
+      <p class="footer-tag">Simple. Connected. Ready for growth.</p>
+      <p>OneSync ERP is a business management platform that connects day-to-day workflows, from sales and purchasing to inventory and payments.</p>
+    </div>
+    <nav aria-label="Product">
+      <h2 class="footer-h">Product</h2>
+      <ul>
+        <li><a href="../erp-software/index.html">ERP overview</a></li>
+        <li><a href="../how-it-works/index.html">How it works</a></li>
+        <li><a href="../features/index.html">Capabilities</a></li>
+        <li><a href="../solutions/index.html">Solutions</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Resources">
+      <h2 class="footer-h">Resources</h2>
+      <ul>
+        <li><a href="../resources/what-is-erp-software/index.html">What is ERP software?</a></li>
+        <li><a href="../resources/how-to-choose-erp-software/index.html">How to choose ERP software</a></li>
+        <li><a href="../resources/sales-purchase-inventory-workflow/index.html">Sales, purchasing and inventory workflow</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Company">
+      <h2 class="footer-h">Company</h2>
+      <ul>
+        <li><a href="../about/index.html">About</a></li>
+        <li><a href="../contact/index.html">Contact</a></li>
+        <li><a href="../privacy/index.html">Privacy</a></li>
+        <li><a href="../terms/index.html">Terms</a></li>
+      </ul>
+    </nav>
+    <div class="footer-cta">
+      <h2 class="footer-h">Get started</h2>
+      <p>See OneSync on your own workflow.</p>
+      <a class="btn btn-primary btn-sm" href="../book-demo/index.html">Book a demo<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+  <div class="container footer-base">
+    <p>&copy; 2026 OneSync ERP. All rights reserved.</p>
+  </div>
+</footer>
+
+  <script src="../assets/js/site.js" defer data-endpoint="" data-email="" data-timeframe=""></script>
+</body>
+</html>

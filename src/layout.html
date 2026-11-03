@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <meta name="robots" content="{{robots}}">
+  <link rel="canonical" href="{{canonical}}">
+  <meta name="theme-color" content="#0B2E27">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{site.name}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{canonical}}">
+  <meta property="og:locale" content="en_IN">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  {{jsonld}}
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="{{pageClass}}">
+  {{sprite}}
+  <a class="skip-link" href="#main">Skip to main content</a>
+  {{header}}
+  <main id="main">
+    {{breadcrumb}}
+    {{content}}
+  </main>
+  {{footer}}
+  <script src="/assets/js/site.js" defer data-endpoint="{{site.formEndpoint}}" data-email="{{site.contactEmail}}" data-timeframe="{{site.responseTime}}"></script>
+</body>
+</html>
