@@ -556,7 +556,101 @@ code { padding: .1em .35em; border-radius: 6px; background: var(--bg-soft); font
 .footer-base p { margin: 0; }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-about, .footer-cta { grid-column: 1 / -1; } .footer-grid > nav { grid-column: span 1; } }
 
-/* 13. Motion & print ------------------------------------------------------- */
+/* 13. Phones: a lighter, simpler layout ------------------------------------
+   Desktop and tablet are untouched. On phones: tighter spacing, one column,
+   no decorative extras, chips that scroll sideways, and a fixed "Book a demo" bar. */
+.mobile-cta { display: none; }
+@media (max-width: 640px) {
+  :root { --section-y: 2.75rem; --header-h: 60px; --gutter: 1.1rem; }
+  body { font-size: 1rem; line-height: 1.6; padding-bottom: 5rem; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.55rem; }
+  h3 { font-size: 1.0625rem; }
+  .lead { font-size: 1.0625rem; }
+  .section-head { margin-bottom: 1.5rem; }
+  .section-head > p:last-child { font-size: 1rem; }
+  .eyebrow { margin-bottom: .6rem; font-size: .75rem; }
+  .btn { width: 100%; }
+  .btn-sm { width: auto; }
+  .actions, .hero-actions, .cta-actions, .cta-card .row { flex-direction: column; align-items: stretch; }
+
+  /* Header and bottom bar */
+  .brand-name { font-size: 1.0625rem; }
+  .brand-mark { width: 30px; height: 30px; }
+  .mobile-cta { position: fixed; inset: auto 0 0; z-index: 40; display: block; padding: .65rem var(--gutter) calc(.65rem + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: rgb(255 255 255 / 94%); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .mobile-cta .btn { min-height: 48px; }
+  body:has(#demo-form) .mobile-cta, body:has(#enquiry-form) .mobile-cta { display: none; }
+  body:has(#demo-form), body:has(#enquiry-form) { padding-bottom: 0; }
+
+  /* Hero and mock-ups: keep the idea, drop the clutter */
+  .hero2 { padding-top: 2rem; }
+  .pill-eyebrow { margin-bottom: 1rem; font-size: .75rem; }
+  .hero-actions { margin: 1.5rem 0 0; }
+  .hero-checks { display: none; }
+  .dash-wrap { margin-top: 1.75rem; margin-bottom: -2rem; }
+  .dash-top, .dash-row, .dash-title { display: none; }
+  .dash-main { padding: .8rem; }
+  .kpi strong { font-size: .9375rem; }
+  #modules { padding-top: calc(var(--section-y) + 2.25rem); }
+  .so-table, .so-states { display: none; }
+  .page-hero { padding-block: 2rem; }
+
+  /* Cards become light list rows */
+  .card, .panel, .sol-visual, .why, .step, .journey-card { padding: 1.1rem; }
+  .grid, .rows, .cap-grid, .adjust, .ladder, .steps, .layers, .faq, .qgrid { gap: .75rem; }
+  .ico { width: 44px; height: 44px; margin-bottom: .75rem; border-radius: 12px; }
+  .mod, .mod:first-child, .mod:last-child { flex-direction: row; align-items: center; gap: .9rem; padding: 1rem; border: 1px solid var(--line); background: #fff; color: inherit; }
+  .mod:first-child h3, .mod h3 { font-size: 1rem; color: var(--ink-950); }
+  .mod:first-child p, .mod p { font-size: .875rem; color: var(--ink-500); }
+  .mod:first-child .ico { width: 44px; height: 44px; background: var(--brand-50); color: var(--brand-600); }
+  .mod .ico { margin: 0; }
+  .mod > .icon, .mod:first-child > .icon, .mod:last-child > .icon { margin: 0 0 0 auto; color: var(--brand-600); }
+  .ind::before, .ind-media { display: none; }
+  .ind-body { padding: 1rem 1.1rem; }
+  .ind::after { width: 2.5rem; font-size: 1.2rem; }
+  .stat .ico { display: none; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.25rem 0; }
+  .stat, .stat + .stat { align-items: flex-start; padding: 0 .75rem; border: 0; text-align: left; }
+  .stat:nth-child(even) { border-left: 1px solid rgb(255 255 255 / 18%); }
+  .stat strong { font-size: 1.85rem; }
+  .stat .lbl { margin-top: .25rem; font-size: .8125rem; }
+  .whys { gap: 1rem; }
+  .why { padding: .9rem 0 0; }
+  .rows .res-card { padding: 1rem 1.1rem; }
+  .rows .res-card .ico { display: none; }
+  .rows .res-card { grid-template-columns: 1fr; }
+  .rows .res-card .text-link { grid-column: 1; padding-top: .4rem; }
+
+  /* Page furniture */
+  .pagenav, .toc { flex-wrap: nowrap; justify-content: flex-start; margin: 1.25rem calc(var(--gutter) * -1) 0; padding: .1rem var(--gutter) .5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .pagenav::-webkit-scrollbar, .toc::-webkit-scrollbar { display: none; }
+  .pagenav a, .toc a { flex: none; min-height: 40px; padding: .35rem .9rem; font-size: .875rem; }
+  .ph-grid { text-align: left; justify-items: stretch; }
+  .faq-aside { text-align: left; }
+  .faq-aside .aside-card, .faq-aside .pagenav { display: none; }
+  .faq summary { min-height: 52px; padding: .75rem 1rem; font-size: 1rem; }
+  .faq .answer { padding: 0 1rem 1rem; }
+  .step .links { margin-top: .25rem; }
+  .table-wrap tr { padding: .8rem 1rem; }
+  .ledger-head { flex-wrap: wrap; padding: .75rem 1rem; }
+  .ledger th, .ledger td { padding: .6rem .85rem; }
+  .guide h2 { margin-top: 2rem; }
+  .guide-next { padding: 1.25rem; }
+  .cta-card { padding: 2rem 1.25rem; border-radius: var(--radius); }
+  .cta-band { padding-block: 2.25rem; }
+  .form-card { padding: 1.25rem; border-radius: var(--radius); }
+  .field { margin-bottom: 1rem; }
+  .summary-line { padding: .9rem 1rem; }
+  .quote-line { font-size: 1.6rem; }
+
+  /* Footer: brand line, one call to action, link columns */
+  .footer-about p:last-child { display: none; }
+  .footer-grid { gap: 1.75rem 1rem; padding-block: 2.25rem 1.5rem; }
+  .footer-cta { padding: 1.1rem; }
+  .footer-base { padding-bottom: 1.5rem; }
+}
+
+/* 14. Motion & print ------------------------------------------------------- */
 .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; transition-delay: var(--d, 0s); }
 .js .reveal.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
