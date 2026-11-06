@@ -4,39 +4,41 @@ description: Tell us about your business and what you want to understand. We wil
 path: /contact/
 crumb: Contact
 ---
-<section class="page-hero">
-  <div class="container ph-grid">
-    <div>
-      <p class="eyebrow">Contact</p>
-      <h1>Ask a product question.</h1>
-      <p class="lead">Tell us about your business and what you want to understand. We will reply with a straight answer, including where OneSync is not the right fit.</p>
-    </div>
+<header class="doc-hero">
+  <div class="container">
+    <p class="eyebrow">Contact</p>
+    <h1>Ask a product question.</h1>
+    <p class="lead">Tell us about your business and what you want to understand. We will reply with a straight answer, including where OneSync is not the right fit.</p>
   </div>
-</section>
+</header>
 
-<section class="section">
+<section class="section pt-0">
   <div class="container contact-grid">
     <div class="form-card">
       <form id="enquiry-form" data-kind="contact" method="post" action="{{site.formEndpoint}}" novalidate>
-        <div class="field">
-          <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
-          <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-err">
-          <p class="error-msg" id="name-err" role="alert"></p>
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-err">
+            <p class="error-msg" id="name-err" role="alert"></p>
+          </div>
+          <div class="field">
+            <label for="email">Work email <span class="req" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="email-err">
+            <p class="error-msg" id="email-err" role="alert"></p>
+          </div>
         </div>
-        <div class="field">
-          <label for="email">Work email <span class="req" aria-hidden="true">*</span></label>
-          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="email-err">
-          <p class="error-msg" id="email-err" role="alert"></p>
-        </div>
-        <div class="field">
-          <label for="phone">Phone</label>
-          <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" aria-describedby="phone-err">
-          <p class="error-msg" id="phone-err" role="alert"></p>
-        </div>
-        <div class="field">
-          <label for="business_name">Business name</label>
-          <input type="text" id="business_name" name="business_name" autocomplete="organization">
-          <p class="error-msg" role="alert"></p>
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" aria-describedby="phone-err">
+            <p class="error-msg" id="phone-err" role="alert"></p>
+          </div>
+          <div class="field">
+            <label for="business_name">Business name</label>
+            <input type="text" id="business_name" name="business_name" autocomplete="organization">
+            <p class="error-msg" role="alert"></p>
+          </div>
         </div>
         <div class="field">
           <label for="business_does">What does your business do?</label>
@@ -59,12 +61,17 @@ crumb: Contact
       </form>
     </div>
 
-    <aside aria-labelledby="next-h">
-      <h2 class="h-md" id="next-h">Prefer to see it first?</h2>
-      <p class="muted mt-1">Describe the workflow you want to manage and see the relevant parts of OneSync ERP. We will say plainly what sits outside the product.</p>
-      <p class="mt-2"><a class="btn btn-secondary" href="/book-demo/">Book a demo</a></p>
-      <div class="note mt-4">
-        <p><strong>Useful to have in mind, optional.</strong> How an order moves from enquiry to payment, what you use to track stock, and which systems must keep working alongside OneSync.</p>
+    <aside class="side-stack" aria-label="Other ways to start">
+      <div class="side-card">
+        <span class="ico ico--sm">{{icon:play}}</span>
+        <h2>Prefer to see it first?</h2>
+        <p>Describe the workflow you want to manage and see the relevant parts of OneSync ERP. We will say plainly what sits outside the product.</p>
+        <a class="btn btn-secondary btn-sm" href="/book-demo/">Book a demo</a>
+      </div>
+      <div class="side-card">
+        <span class="ico ico--sm">{{icon:list}}</span>
+        <h2>Useful to have in mind</h2>
+        <p>Optional, but it helps us answer faster: how an order moves from enquiry to payment, what you use to track stock, and which systems must keep working alongside OneSync.</p>
       </div>
     </aside>
   </div>
